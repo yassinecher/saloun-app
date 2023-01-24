@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@300&display=swap');
+
+.logotext{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: light;
+    font-size: 45px;
+    letter-spacing: -4px;
+    display: flex;
+}
+.logo{
+    width: 70px;
+    margin-top: -10px;
+}
+.navb{
+height: 80px;
+position: absolute;
+bottom: 0;
+width: 100%;
+left: 0;
+padding: 0px;
+margin:  0px;
+text-align: center;
+display: flex;
+align-content: center;
+flex-direction: column-reverse;
+justify-content: space-around;
+}
+.c-col{
+    height: 80px;
+  
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around; 
+     display: flex ;
+    padding: 0!important;
+  
+
+}
+.c-col:after {
+    content: "";
+  background: #bbbbbb;
+  display: block;
+  position: absolute;
+  padding-top: 40%;
+  padding-left: 50%;
+  padding-right: 50%;
+  padding-bottom: 40%;
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+  margin-top: -0%;
+  opacity: 0;
+  transition: all 0.1s
+}
+.c-col:active:after {
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    opacity: 1;
+    transition: 0s
+}
