@@ -17,7 +17,7 @@ export default function Mainf() {
             
             <div className="row">
                 <div className="col-12 center">
-                 <div className="logotext"><div className="logo"><img  src={logo} width="70"/></div> Saloun</div>
+                 <div className="logotext"><div className="logo"><img  src={logo} width="70"/></div>Saloun</div>
                 </div> 
                 <div className="col-12 center"><br/></div>
                 <div className="col-12">

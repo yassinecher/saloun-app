@@ -10,12 +10,14 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [statu, setStatu] = useState("")
   const [role, setRole] = useState()
+  
 
   function signup(email, password) {
 
@@ -92,14 +94,6 @@ return docSnap.data().stat
 
   }
 
-
-
-
-
-
-
-
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
@@ -131,10 +125,14 @@ return docSnap.data().stat
     addnewaccount,
 
   }
-
+  
+  
+  
+  
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
     </AuthContext.Provider>
   )
+
 }

@@ -15,29 +15,22 @@ import Continuesingup from "./private-c/Continuesignup"
 
 import Mainf from "./public-c/Main"
 import PublicRoute from "./PublicRoute"
+import Store from "./private-c/Store"
 
 function Routs() {
- 
-
-
-
-
-
   return (
-
         <Router>
           <AuthProvider>
             <Switch><PublicRoute exact path="/" component={Mainf} />
-            <PrivateRoute   path="/Dashboard" component={Dashboard} />
-            <PrivateRoute   path="/continuesignup" component={Continuesingup} />
-              <PublicRoute path="/signup" component={Signup} />
-              <PublicRoute path="/login" component={Login} />
-              <PublicRoute path="/forgot-password" component={ForgotPassword} />
-
+            <PrivateRoute path="/Dashboard" component={Dashboard} />
+            <PrivateRoute path="/continuesignup" component={Continuesingup} />
+            <PublicRoute path="/signup" component={Signup} />
+            <PublicRoute path="/login" component={Login} />
+            <PublicRoute path="/forgot-password" component={ForgotPassword} />
+            <PublicRoute path="/store" component={Store}/>
             </Switch>
           </AuthProvider>
         </Router>
-     
   )
 }
 

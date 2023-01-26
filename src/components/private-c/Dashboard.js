@@ -13,19 +13,23 @@ import UpdateProfile from "./UpdateProfile"
 
 
 export default function Dashboard() {
+
  const {checkstat} =useAuth()
  const [stat, setStat] = useState("");
  const history = useHistory()
  const promises = []
 
 
-promises.push( checkstat())
+promises.push(checkstat())
 
 Promise.all(promises)
 .then((re) => {
   console.log(re)
   if(re[0]=="Waiting for username"){
-    //*history.push("/continuesignup")
+    history.push("/continuesignup")
+   }
+   else{
+    history.push("/store")
    }
    
 })
@@ -49,18 +53,13 @@ Promise.all(promises)
 
 
 
-  return (<>
-   
+  return (
+  <>
    <h1>Home</h1>
-
-
-
-
    <Router>
           <AuthProvider>
           <Navigator/>
             <Switch>
-           
               <PrivateRoute path="/dashboard/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/dashboard/bookings" component={Bookings} />
               <PrivateRoute path="/dashboard/Search" component={Search} />
@@ -68,8 +67,7 @@ Promise.all(promises)
               <PrivateRoute path="/dashboard/updateProfile" component={UpdateProfile} />
             </Switch>
           </AuthProvider>
-        </Router>
-     
+        </Router>     
 
    </>
   );
