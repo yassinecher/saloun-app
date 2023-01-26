@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { db } from './firebase';
 
-function Conversation() {
+function Conversation({ conversationId }) {
   const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = db
+      .collection('conversations')
+      .doc(conversationId)
+      .collection('messages')
+      .onSnapshot((snapshot) => {
+        const messagesData = snapshot.docs.map((doc) => doc.data());
+        setMessages(messagesData);
+      });
+    return () => unsubscribe();
+  }, [conversationId]);
 
   function handleSubmit(e) {
     e.preventDefault();
     const newMessage = e.target.elements.message.value;
-    setMessages([...messages, newMessage]);
+    db.collection('conversations')
+      .doc(conversationId)
+      .collection('messages')
+      .add({ message: newMessage });
   }
 
   return (
@@ -17,7 +33,7 @@ function Conversation() {
       </form>
       <ul>
         {messages.map((message, index) => (
-          <li key={index}>{message}</li>
+          <li key={index}>{message.message}</li>
         ))}
       </ul>
     </div>
