@@ -14,12 +14,13 @@ function Conversation({ conversationId }) {
       .collection('conversations')
       .doc(conversationId)
       .collection('messages')
-      .onSnapshot((snapshot) => {
-        const messagesData = snapshot.docs.map((doc) => doc.data());
-        setMessages(messagesData);
+      .onSnapshot((snapshot) => { const messagesData = snapshot.docs.map((doc) => doc.data());
+    setMessages(messagesData);
       });
-    return () => unsubscribe();
-  }, [conversationId]);
+  
+      return () => unsubscribe();
+  
+    }, [conversationId]);
 
   function handleSubmit(e) {
     e.preventDefault();
